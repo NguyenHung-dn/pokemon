@@ -1,5 +1,6 @@
-import Image from "next/image";
 import axios from "axios";
+import Link from "next/link";
+import Layout from "@/components/layout";
 import { useEffect, useState } from "react";
 import PokemonList from "@/components/PokemonList";
 import Loader from "@/components/Loader";
@@ -88,20 +89,28 @@ export default function Home() {
   }
 
   return (
-    <div className="ml-16 mr-16">
-      <h2>My Pokemon Collection</h2>
+    <Layout title={"Pokédex"}>
+      <main>
+        <h1>
+          <Link href="/account">go account page</Link>
+        </h1>
 
-      <FilterBox
-        pokemons={pokemons}
-        colorClasses={colorClasses}
-        listType={listType}
-        handleCheckBox={handleCheckBox}
-        handleClickSearch={handleClickSearch}
-        handleInput={handleInput}
-        filteredPokemonType={filteredPokemonType}
-        input={input}
-      />
-      <PokemonList pokemons={filteredPokemonType} />
-    </div>
+        <div className="ml-16 mr-16">
+          <h2>My Pokemon Collection</h2>
+
+          <FilterBox
+            pokemons={pokemons}
+            colorClasses={colorClasses}
+            listType={listType}
+            handleCheckBox={handleCheckBox}
+            handleClickSearch={handleClickSearch}
+            handleInput={handleInput}
+            filteredPokemonType={filteredPokemonType}
+            input={input}
+          />
+          <PokemonList pokemons={filteredPokemonType} />
+        </div>
+      </main>
+    </Layout>
   );
 }
