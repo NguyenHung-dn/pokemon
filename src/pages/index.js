@@ -1,6 +1,8 @@
 import axios from "axios";
 import Link from "next/link";
 import Layout from "@/components/layout";
+import Head from "next/head";
+
 import { useEffect, useState } from "react";
 import PokemonList from "@/components/PokemonList";
 import Loader from "@/components/Loader";
@@ -89,8 +91,31 @@ export default function Home() {
   }
 
   return (
-    <Layout title={"Pokédex"}>
-      <main>
+    <main>
+      <Layout title={"Pokédex"}>
+        <Head>
+          <title>Pokédex - Homepage</title>
+          <meta property="og:title" content="Pokédex - Homepage" />
+          <meta
+            property="og:description"
+            content="Find your favorite pokémon"
+          />
+          <meta property="og:image" content="/banner.png" />
+          <meta
+            property="og:url"
+            content="https://pokemon-76uw-l7og3xfg0-nguyenhungs-projects-1d1013a4.vercel.app/"
+          />
+          <meta property="og:type" content="website" />
+          <meta name="twitter:card" content="image card" />
+          <meta name="twitter:title" content="Pokédex - Homepage" />
+          <meta
+            name="twitter:description"
+            content="Find your favorite pokémon"
+          />
+          <meta name="twitter:image" content="/banner.png" />
+          <link rel="icon" type="image/x-icon" href="/favicon.png"></link>
+        </Head>
+
         <h1>
           <Link href="/account">go account page</Link>
         </h1>
@@ -110,7 +135,7 @@ export default function Home() {
           />
           <PokemonList pokemons={filteredPokemonType} />
         </div>
-      </main>
-    </Layout>
+      </Layout>
+    </main>
   );
 }
