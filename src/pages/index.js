@@ -1,7 +1,7 @@
 import axios from "axios";
 import Link from "next/link";
-import Layout from "@/components/layout";
 import Head from "next/head";
+import Layout from "@/components/layout";
 
 import { useEffect, useState } from "react";
 import PokemonList from "@/components/PokemonList";
