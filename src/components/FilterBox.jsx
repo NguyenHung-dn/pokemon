@@ -12,32 +12,6 @@ export default function FilterBox(props) {
     filteredPokemonType,
   } = props;
 
-  //   const handleCheckBox = (e) => {
-  //     e.target.checked
-  //       ? setSelectedTypes((prevSelectedTypes) => [
-  //           ...prevSelectedTypes,
-  //           e.target.value,
-  //         ])
-  //       : setSelectedTypes((prevSelectedTypes) =>
-  //           prevSelectedTypes.filter((type) => type !== e.target.value)
-  //         );
-  //   };
-
-  //   const handleClickSearch = () => {
-  //     setFilterValue({ input, types: selectedTypes });
-  //   };
-  //   const handleInput = (e) => {
-  //     setInput(e.target.value);
-  //   };
-  //   const filterByInput = pokemons.filter((pokemon) => {
-  //     return pokemon.name.toLowerCase().includes(filterValue.input.toLowerCase());
-  //   });
-  //   const filteredPokemonType = filterByInput.filter((pokemon) =>
-  //     filterValue.types.length > 0
-  //       ? filterValue.types.some((type) => pokemon.types.includes(type))
-  //       : filterByInput
-  //   );
-
   return (
     <div className="flex flex-col w-[785px] h-[160px] gap-4 ml-[100px] font-montserrat">
       <div>
@@ -80,12 +54,6 @@ export default function FilterBox(props) {
           );
         })}
       </div>
-      {/* test data */}
-      {/* <div className="flex flex-wrap gap-4">
-        {filteredPokemonType.map((poke) => {
-          return <div key={poke.name}>{poke.name}</div>;
-        })}
-      </div> */}
     </div>
   );
 }

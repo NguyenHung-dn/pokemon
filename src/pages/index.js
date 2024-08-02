@@ -30,7 +30,43 @@ export default function Home() {
       types: response.data.types.map((t) => t.type.name),
     };
   };
+  // useEffect(() => {
+  //   const fetchAllPokemon = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://pokeapi.co/api/v2/pokemon?limit=151"
+  //       );
+  //       const pokemonUrls = response.data.results.map((pokemon) => pokemon.url);
+  //       const pokemonResponses = await Promise.all(
+  //         pokemonUrls.map((url) => axios.get(url))
+  //       );
+  //       const allPokemonData = pokemonResponses.map(
+  //         (response) => response.data
+  //       );
+  //       console.log("🚀 ~ fetchAllPokemon ~ allPokemonData:", allPokemonData);
+  //       const list = allPokemonData.reduce((acc, pokemon) => {
+  //         return acc.concat(pokemon.types);
+  //       }, []);
+  //       const listSet = new Set(list); //remove Remove duplicates type
+  //       const typeList = [...listSet];
+  //       console.log("🚀 ~ fetchAllPokemon ~ typeList:", typeList);
+  // Chọn ra những thông tin cần thiết từ dữ liệu
+  // const selectedPokemonData = allPokemonData.map((pokemon) => ({
+  //   name: pokemon.name,
+  //   id: pokemon.id,
+  //   height: pokemon.height,
+  //   weight: pokemon.weight,
+  //   types: pokemon.types.map((typeInfo) => typeInfo.type.name),
+  // }));
 
+  // setPokemonData(selectedPokemonData);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     }
+  //   };
+
+  //   fetchAllPokemon();
+  // }, []);
   // fetch all pokemons
   useEffect(() => {
     const fetchPokemons = async () => {
