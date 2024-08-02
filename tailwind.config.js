@@ -7,6 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      spacing: {
+        "6px": "6px",
+        "150px": "150px",
+        "152px": "152px",
+        "200px": "200px",
+        "330px": "330px",
+        "340px": "340px",
+      },
       colors: {
         black: "#333333",
         bug: "#A6B91A",
@@ -37,6 +45,7 @@ module.exports = {
         press_start_2p: ["var(--font-press_start_2p)"],
       },
       borderRadius: {
+        4: "4px",
         "60px": "60px",
       },
     },
