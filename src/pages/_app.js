@@ -15,7 +15,9 @@ const press_start_2P = Press_Start_2P({
 
 export default function App({ Component, pageProps }) {
   return (
-    <main className={`${montserrat.variable} ${press_start_2P.variable} `}>
+    <main
+      className={`${montserrat.variable} ${press_start_2P.variable} font-montserrat `}
+    >
       <Component {...pageProps} />
     </main>
   );

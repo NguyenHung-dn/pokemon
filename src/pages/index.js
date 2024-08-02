@@ -152,10 +152,6 @@ export default function Home() {
           <link rel="icon" type="image/x-icon" href="/favicon.png"></link>
         </Head>
 
-        <h1>
-          <Link href="/account">go account page</Link>
-        </h1>
-
         <div className="ml-16 mr-16">
           <h2>My Pokemon Collection</h2>
 
