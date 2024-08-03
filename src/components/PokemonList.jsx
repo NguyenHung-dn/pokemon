@@ -1,6 +1,6 @@
 import PokemonCard from "./PokemonCard";
 
-function PokemonList({ pokemons }) {
+function PokemonList({ pokemons, handleClickDetail }) {
   return (
     <ul className="flex flex-wrap justify-between w-3/4">
       {pokemons.map((pokemon) => {
@@ -20,6 +20,7 @@ function PokemonList({ pokemons }) {
             type={pokemon.types[0]}
             typeCss={pokemon.typeCss}
             pokemon={pokemon}
+            handleClickDetail={handleClickDetail}
           />
         );
       })}
