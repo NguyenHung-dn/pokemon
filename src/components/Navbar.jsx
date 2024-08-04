@@ -14,7 +14,7 @@ const Navbar = ({ handleLogin, handleLogout, isLoggedIn }) => {
       <div className="fixed top-0 left-0 right-0 z-50 bg-white">
         <div className="flex justify-between mx-auto h-14 items-center ">
           <h2 className="flex justify-center items-center font-start_press_2p ml-8 font-bold text-base text-primary font-press_start_2p">
-            Pokedex
+            <Link href="/">Pokedex</Link>
           </h2>
           {!isLoggedIn ? (
             <>

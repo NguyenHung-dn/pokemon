@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-function PokemonCard({ pokemon, type, imageUrl, name }) {
+function PokemonCard({ pokemon, type, imageUrl, name, handleClickDetail }) {
   let typeToClassMap = {
     grass: "bg-grass",
     fire: "bg-fire",
@@ -22,9 +22,16 @@ function PokemonCard({ pokemon, type, imageUrl, name }) {
     flying: "bg-flying",
   };
   const classTypes = typeToClassMap[type];
-
+  const handleClick = () => {
+    handleClickDetail(name);
+  };
   return (
-    <li className="w-32 h-44 mt-5 mb-5 mr-20 text-center transition hover:-translate-y-2 border-2 relative overflow-hidden ">
+    <li
+      onClick={() => {
+        handleClick();
+      }}
+      className="w-32 h-44 mt-5 mb-5 mr-20 text-center transition hover:-translate-y-2 border-2 relative overflow-hidden cursor-pointer "
+    >
       <div
         className={`h-[150%] w-[150%] text-white rounded-full absolute bottom-10 left-[-32px]  ${classTypes}`}
       ></div>

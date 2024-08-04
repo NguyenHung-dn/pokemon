@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import PokemonList from "@/components/PokemonList";
 import Loader from "@/components/Loader";
 import FilterBox from "@/components/FilterBox";
+import ModalPokemon from "@/components/ModalPokemon";
 
 export default function Home() {
   const [pokemons, setPokemons] = useState([]);
@@ -18,6 +19,7 @@ export default function Home() {
     input: "",
     types: [],
   });
+  const [pokemonDetail, setPokemonDetail] = useState("");
   const fetchPokemon = async (pokemon) => {
     const response = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${pokemon}`
@@ -126,6 +128,10 @@ export default function Home() {
     return <Loader />;
   }
 
+  console.log("pokemon-detail", pokemonDetail);
+  const handleClickDetail = (value) => {
+    setPokemonDetail(value);
+  };
   return (
     <main>
       <Layout title={"Pokédex"}>
@@ -152,24 +158,25 @@ export default function Home() {
           <link rel="icon" type="image/x-icon" href="/favicon.png"></link>
         </Head>
 
-        <h1>
-          <Link href="/account">go account page</Link>
-        </h1>
-
-        <div className="ml-16 mr-16">
+        <div className="ml-16 mr-16 flex ">
           <h2>My Pokemon Collection</h2>
-
-          <FilterBox
-            pokemons={pokemons}
-            colorClasses={colorClasses}
-            listType={listType}
-            handleCheckBox={handleCheckBox}
-            handleClickSearch={handleClickSearch}
-            handleInput={handleInput}
-            filteredPokemonType={filteredPokemonType}
-            input={input}
-          />
-          <PokemonList pokemons={filteredPokemonType} />
+          <div>
+            <FilterBox
+              pokemons={pokemons}
+              colorClasses={colorClasses}
+              listType={listType}
+              handleCheckBox={handleCheckBox}
+              handleClickSearch={handleClickSearch}
+              handleInput={handleInput}
+              filteredPokemonType={filteredPokemonType}
+              input={input}
+            />
+            <PokemonList
+              pokemons={filteredPokemonType}
+              handleClickDetail={handleClickDetail}
+            />
+          </div>
+          <ModalPokemon pokemonDetail={pokemonDetail} />
         </div>
       </Layout>
     </main>
