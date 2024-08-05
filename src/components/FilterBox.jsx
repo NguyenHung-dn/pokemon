@@ -13,7 +13,7 @@ export default function FilterBox(props) {
   } = props;
 
   return (
-    <div className="flex flex-col w-[785px] h-[160px] gap-4 ml-[100px] font-montserrat">
+    <div className="flex flex-col w-[785px] h-[160px] gap-4  font-montserrat my-100px">
       <div>
         <input
           className="w-[260px] h-[40px] line pl-3 border-black border-[1px] rounded-lg "

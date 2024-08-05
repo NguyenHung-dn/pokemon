@@ -1,4 +1,5 @@
 import axios from "axios";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function ModalPokemon({ pokemonDetail }) {
@@ -45,7 +46,7 @@ export default function ModalPokemon({ pokemonDetail }) {
           }))
         );
       } catch (err) {
-        setError("Failed to fetch Pokémon data");
+        setError("Failed to fetch   data");
         console.error(err);
       } finally {
         setLoading(false);
@@ -54,36 +55,37 @@ export default function ModalPokemon({ pokemonDetail }) {
 
     fetchData();
   }, [pokemonDetail]);
-  console.log(pokemon);
+
   return (
-    <>
+    <div className="mt-225px">
       {pokemon ? (
-        <div className={`h-1000px w-375px rounded-xl relative  `}>
+        <div className={`w-375px h-fit rounded-xl relative  `}>
           {pokemon && (
-            <>
+            <div className="flex  flex-col relative">
               <div className="absolute top-1 left-1 w-10 h-10 bg-white  flex justify-center items-center rounded-lg z-10 ">
                 1
               </div>
               <div className="absolute top-2 right-3 font-press_start_2p z-10">
                 X
               </div>
-              <div className="w-375px flex justify-center">
-                <img
-                  className=" absolute w-96 h-fit z-10 top-0"
+
+              <div
+                className={`min-h-1000px w-375px ${typeCss} rounded-xl relative flex flex-col justify-center items-end`}
+              >
+                <Image
+                  width={200}
+                  height={200}
+                  className=" absolute top-24 right-1/2 translate-x-1/2"
                   src={pokemon.sprites.front_shiny}
                   alt={pokemon.name}
                 />
-              </div>
-              <div
-                className={`h-1000px w-375px ${typeCss} rounded-xl relative flex justify-center items-end`}
-              >
-                <div className="h-780px w-365px bg-white rounded-xl mx-auto mb-1 flex flex-col items-center gap-3 ">
+                <div className="h-180px w-365px bg-white rounded-xl mx-auto mb-1 flex flex-col items-center gap-3 mt-56 ">
                   <p className="mt-16">{pokemon.name}</p>
                   <div className="flex gap-2">
                     {pokemon.types.map((item) => {
                       return (
                         <div
-                          className={`bg-${item.type.name} w-72px text-center rounded-4`}
+                          className={`bg-${item.type.name}  w-72px text-center rounded-4`}
                           key={item.type.name}
                         >
                           {item.type.name}
@@ -122,17 +124,21 @@ export default function ModalPokemon({ pokemonDetail }) {
                       );
                     })}
                   </div>
-                  <div className="flex gap-3">
-                    <p className="bg-steel">{pokemon.height} </p>
-                    <p className="bg-steel">{pokemon.weight}</p>
+                  <div className="flex gap-1.5">
+                    <div className="bg-steel h-30px w-170px rounded-xl text-center flex items-center justify-center">
+                      {pokemon.height * 10} cm
+                    </div>
+                    <p className="bg-steel h-30px w-170px rounded-xl text-center flex items-center justify-center">
+                      {pokemon.weight / 10} kg
+                    </p>
                   </div>
-                  <div className="overflow-scroll">
+                  <div className=" flex gap-4 flex-col mb-4">
                     {abilities.map((ability, index) => (
                       <div
-                        className="text-center  bg-steel mx-2 rounded-xl"
+                        className="text-center  bg-steel mx-2 rounded-xl "
                         key={index}
                       >
-                        <p className="">{ability.name}</p>
+                        <p className="mb-1.5 mt-1.5">{ability.name}</p>
                         <div className="text-start px-2">
                           <p> {ability.description}</p>
                         </div>
@@ -142,14 +148,14 @@ export default function ModalPokemon({ pokemonDetail }) {
                   {/* <div className=" h-28 w-345px bg-steel "></div> */}
                 </div>
               </div>
-            </>
+            </div>
           )}
         </div>
       ) : (
-        <div className={`h-1000px w-375px rounded-xl relative  `}>
+        <div className={`min-h-1000px w-375px rounded-xl relative  `}>
           chosePokemon to view more detail
         </div>
       )}
-    </>
+    </div>
   );
 }

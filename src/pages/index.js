@@ -32,44 +32,7 @@ export default function Home() {
       types: response.data.types.map((t) => t.type.name),
     };
   };
-  // useEffect(() => {
-  //   const fetchAllPokemon = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "https://pokeapi.co/api/v2/pokemon?limit=151"
-  //       );
-  //       const pokemonUrls = response.data.results.map((pokemon) => pokemon.url);
-  //       const pokemonResponses = await Promise.all(
-  //         pokemonUrls.map((url) => axios.get(url))
-  //       );
-  //       const allPokemonData = pokemonResponses.map(
-  //         (response) => response.data
-  //       );
-  //       console.log("🚀 ~ fetchAllPokemon ~ allPokemonData:", allPokemonData);
-  //       const list = allPokemonData.reduce((acc, pokemon) => {
-  //         return acc.concat(pokemon.types);
-  //       }, []);
-  //       const listSet = new Set(list); //remove Remove duplicates type
-  //       const typeList = [...listSet];
-  //       console.log("🚀 ~ fetchAllPokemon ~ typeList:", typeList);
-  // Chọn ra những thông tin cần thiết từ dữ liệu
-  // const selectedPokemonData = allPokemonData.map((pokemon) => ({
-  //   name: pokemon.name,
-  //   id: pokemon.id,
-  //   height: pokemon.height,
-  //   weight: pokemon.weight,
-  //   types: pokemon.types.map((typeInfo) => typeInfo.type.name),
-  // }));
 
-  // setPokemonData(selectedPokemonData);
-  //     } catch (error) {
-  //       setError(error.message);
-  //     }
-  //   };
-
-  //   fetchAllPokemon();
-  // }, []);
-  // fetch all pokemons
   useEffect(() => {
     const fetchPokemons = async () => {
       const response = await axios.get(
@@ -133,7 +96,7 @@ export default function Home() {
     setPokemonDetail(value);
   };
   return (
-    <main>
+    <div className="mx-auto max-w-screen-xl ">
       <Layout title={"Pokédex"}>
         <Head>
           <title>Pokédex - Homepage</title>
@@ -158,8 +121,7 @@ export default function Home() {
           <link rel="icon" type="image/x-icon" href="/favicon.png"></link>
         </Head>
 
-        <div className="ml-16 mr-16 flex ">
-          <h2>My Pokemon Collection</h2>
+        <div className="ml-16 mr-16 flex w-1200px mx-auto">
           <div>
             <FilterBox
               pokemons={pokemons}
@@ -179,6 +141,6 @@ export default function Home() {
           <ModalPokemon pokemonDetail={pokemonDetail} />
         </div>
       </Layout>
-    </main>
+    </div>
   );
 }

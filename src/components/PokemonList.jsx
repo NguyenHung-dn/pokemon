@@ -2,7 +2,7 @@ import PokemonCard from "./PokemonCard";
 
 function PokemonList({ pokemons, handleClickDetail }) {
   return (
-    <ul className="flex flex-wrap justify-between w-3/4">
+    <ul className="flex flex-wrap gap-10">
       {pokemons.map((pokemon) => {
         return (
           // <PokemonCard
