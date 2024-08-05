@@ -52,8 +52,9 @@ export default function ModalUser({
       console.log("error-modal", error);
     }
   };
+
   return (
-    <div className=" absolute right-24 top-16 h-56 w-340px bg-white rounded-lg flex flex-col items-center">
+    <div className=" mt-80 mr-11 h-56 w-340px bg-white rounded-lg flex flex-col items-center">
       <p className="pt-3 pb-3"> Account</p>
       <form
         onSubmit={(e) => {

@@ -13,7 +13,7 @@ const Navbar = ({ handleLogin, handleLogout, isLoggedIn }) => {
   return (
     <section className="h-500px w-1400px m-auto">
       <div className="fixed top-0 left-4 right-0 z-50 bg-white ">
-        <div className="flex justify-between mx-auto h-14 items-center w-1400px ">
+        <div className="flex justify-between mx-auto h-14 items-center w-1400px relative">
           <h2 className="flex justify-center items-center font-start_press_2p ml-8 font-bold text-base text-primary font-press_start_2p">
             <Link href="/">Pokedex</Link>
           </h2>
@@ -21,9 +21,10 @@ const Navbar = ({ handleLogin, handleLogout, isLoggedIn }) => {
             <>
               <button
                 onClick={handleClickModal}
-                className="flex justify-center items-center mr-8 border rounded-lg border-primary w-150px h-10 text-primary "
+                className="flex justify-center items-center mr-8 border rounded-lg border-primary w-150px h-10 text-primary absolute top-2 right-2 "
               >
-                {modal ? "Close" : "Login"}
+                {modal && "close"}
+                {!modal && "login"}
               </button>
               {modal && (
                 <ModalUser
