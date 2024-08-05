@@ -11,9 +11,9 @@ const Navbar = ({ handleLogin, handleLogout, isLoggedIn }) => {
 
   const router = useRouter();
   return (
-    <section className="h-500px max-w-1400px">
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white">
-        <div className="flex justify-between mx-auto h-14 items-center max-w-1400px ">
+    <section className="h-500px w-1400px m-auto">
+      <div className="fixed top-0 left-4 right-0 z-50 bg-white ">
+        <div className="flex justify-between mx-auto h-14 items-center w-1400px ">
           <h2 className="flex justify-center items-center font-start_press_2p ml-8 font-bold text-base text-primary font-press_start_2p">
             <Link href="/">Pokedex</Link>
           </h2>
@@ -65,16 +65,13 @@ const Navbar = ({ handleLogin, handleLogout, isLoggedIn }) => {
             className=" object-cover"
           />
         </div>
-        <div className="flex items-center justify-center max-w-1400px opacity-65 bg-black h-[500px] absolute inset-0">
-          <div className="font-bold text-5xl text-primary font-press_start_2p opacity-65 bg-black h-[500px]  pt-[314px]">
-            pokedex
-          </div>
+        <div className="flex items-center justify-center w-1400px h-[500px] absolute">
+          <h1 className="font-bold text-5xl text-primary font-press_start_2p opacity-65 bg-black h-[500px] w-full flex justify-center pt-[314px]">
+            {router.pathname === "/" ? "Pokedex" : "Account"}
+          </h1>
         </div>
       </div>
     </section>
   );
 };
 export default Navbar;
-{
-  /* {router.pathname === "/" ? "Pokedex" : "Account"} */
-}

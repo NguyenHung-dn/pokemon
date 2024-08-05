@@ -96,7 +96,7 @@ export default function Home() {
     setPokemonDetail(value);
   };
   return (
-    <div className="mx-auto max-w-screen-xl ">
+    <div className="mx-auto max-w-1400px ">
       <Layout title={"Pokédex"}>
         <Head>
           <title>Pokédex - Homepage</title>
