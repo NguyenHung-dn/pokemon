@@ -61,7 +61,6 @@ const Navbar = ({ handleLogin, handleLogout, isLoggedIn }) => {
             src="/banner.png"
             width={1400}
             height={500}
-            layout="responsive"
             alt="banner"
             className=" object-cover"
           />
