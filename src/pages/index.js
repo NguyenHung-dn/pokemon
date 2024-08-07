@@ -19,12 +19,13 @@ export default function Home() {
     input: "",
     types: [],
   });
-  const [pokemonDetail, setPokemonDetail] = useState("");
+  const [pokemonName, setPokemonName] = useState("");
+  const url = "https://pokeapi.co/api/v2/pokemon";
+  const limitPokemon = "?limit=151";
   const fetchPokemon = async (pokemon) => {
     const response = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${pokemon}`
     );
-
     return {
       id: response.data.id,
       name: response.data.name,
@@ -32,12 +33,10 @@ export default function Home() {
       types: response.data.types.map((t) => t.type.name),
     };
   };
-
+  console.log(`${url}${limitPokemon}`);
   useEffect(() => {
     const fetchPokemons = async () => {
-      const response = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=151"
-      );
+      const response = await axios.get(`${url}${limitPokemon}`);
       const data = await Promise.all(
         response.data.results.map(async (pokemon) => {
           return await fetchPokemon(pokemon.name);
@@ -91,9 +90,8 @@ export default function Home() {
     return <Loader />;
   }
 
-  console.log("pokemon-detail", pokemonDetail);
   const handleClickDetail = (value) => {
-    setPokemonDetail(value);
+    setPokemonName(value);
   };
   return (
     <div className="mx-auto max-w-1400px ">
@@ -106,10 +104,7 @@ export default function Home() {
             content="Find your favorite pokémon"
           />
           <meta property="og:image" content="/banner.png" />
-          <meta
-            property="og:url"
-            content="https://pokemon-76uw-l7og3xfg0-nguyenhungs-projects-1d1013a4.vercel.app/"
-          />
+          <meta property="og:url" content=" " />
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="image card" />
           <meta name="twitter:title" content="Pokédex - Homepage" />
@@ -138,7 +133,10 @@ export default function Home() {
               handleClickDetail={handleClickDetail}
             />
           </div>
-          <ModalPokemon pokemonDetail={pokemonDetail} />
+          <ModalPokemon
+            pokemonName={pokemonName}
+            setPokemonName={setPokemonName}
+          />
         </div>
       </Layout>
     </div>
