@@ -122,7 +122,7 @@ export default function Home() {
         </Head>
 
         <div className="ml-16 mr-16 flex w-1200px mx-auto">
-          <div>
+          <div className="relative">
             <FilterBox
               pokemons={pokemons}
               colorClasses={colorClasses}
