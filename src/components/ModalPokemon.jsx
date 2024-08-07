@@ -2,7 +2,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function ModalPokemon({ pokemonDetail }) {
+export default function ModalPokemon({ pokemonName, setPokemonName }) {
   const [pokemon, setPokemon] = useState(null);
   const [typeCss, setTypeCss] = useState("");
   const [abilities, setAbilities] = useState([]);
@@ -11,17 +11,15 @@ export default function ModalPokemon({ pokemonDetail }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!pokemonDetail) return;
+    if (!pokemonName) return;
 
     const fetchData = async () => {
       try {
         // Fetch Pokémon data
         const pokemonResponse = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/${pokemonDetail}`
+          `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
         );
-
         setPokemon(pokemonResponse.data);
-
         setTypeCss(`bg-${pokemonResponse.data.types[0].type.name}`);
         // Fetch abilities descriptions
         const speciesUrl = pokemonResponse.data.species.url;
@@ -54,8 +52,11 @@ export default function ModalPokemon({ pokemonDetail }) {
     };
 
     fetchData();
-  }, [pokemonDetail]);
+  }, [pokemonName]);
 
+  const handleClickModal = () => {
+    setPokemon(null);
+  };
   return (
     <div className="mt-225px">
       {pokemon ? (
@@ -63,11 +64,16 @@ export default function ModalPokemon({ pokemonDetail }) {
           {pokemon && (
             <div className="flex  flex-col relative">
               <div className="absolute top-1 left-1 w-10 h-10 bg-white  flex justify-center items-center rounded-lg z-10 ">
-                1
+                {pokemon.id}
               </div>
-              <div className="absolute top-2 right-3 font-press_start_2p z-10">
+              <button
+                onClick={() => {
+                  handleClickModal();
+                }}
+                className="absolute top-2 right-3 font-press_start_2p z-10"
+              >
                 X
-              </div>
+              </button>
 
               <div
                 className={`min-h-1000px w-375px ${typeCss} rounded-xl relative flex flex-col justify-center items-end`}
@@ -152,8 +158,10 @@ export default function ModalPokemon({ pokemonDetail }) {
           )}
         </div>
       ) : (
-        <div className={`min-h-1000px w-375px rounded-xl relative  `}>
-          chosePokemon to view more detail
+        <div
+          className={`min-h-1000px w-375px rounded-xl flex items-center justify-center bg-steel  `}
+        >
+          Select a pokémon to see its details
         </div>
       )}
     </div>
