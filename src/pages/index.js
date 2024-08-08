@@ -104,8 +104,11 @@ export default function Home() {
             content="Find your favorite pokémon"
           />
           <meta property="og:image" content="/banner.png" />
-          <meta property="og:url" content=" " />
-          <meta property="og:type" content="website" />
+          <meta
+            property="og:url"
+            content="https://pokemon-main-kohl.vercel.app/ "
+          />
+          <meta property="og:type" content="Pokédex -Homepage" />
           <meta name="twitter:card" content="image card" />
           <meta name="twitter:title" content="Pokédex - Homepage" />
           <meta

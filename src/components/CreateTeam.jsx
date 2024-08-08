@@ -43,7 +43,7 @@ export default function CreateTeam({ userData }) {
         <div>
           {userData &&
             userData.map((u, index) => {
-              return <div>Team {index}</div>;
+              return <div key={index}>Team {index}</div>;
             })}
           {userData.length < 5 && <button>AddTeam</button>}
         </div>
