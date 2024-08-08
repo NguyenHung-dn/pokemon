@@ -33,13 +33,13 @@ function PokemonCard({ pokemon, type, imageUrl, name, handleClickDetail }) {
       className="w-32 h-44 text-center transition hover:-translate-y-2 border-2 relative overflow-hidden cursor-pointer rounded-lg "
     >
       <div
-        className={`h-[150%] w-[150%] text-white rounded-full absolute bottom-10 left-[-32px]  ${classTypes}`}
+        className={`h-[150%] w-[150%] text-white rounded-full absolute bottom-10 left-[-32px] ${classTypes}`}
       ></div>
-      <div className="  w-full absolute flex top-2  justify-center  ">
+      <div className="w-full absolute flex top-2 justify-center">
         <Image width={100} height={100} src={imageUrl} alt={name} />
       </div>
 
-      <div className=" h-full w-full text-center rounded absolute bottom-2 flex items-end justify-center ">
+      <div className=" h-full w-full text-center rounded absolute bottom-2 flex items-end justify-center">
         <h3 className="font-montserrat">{name}</h3>
       </div>
     </li>

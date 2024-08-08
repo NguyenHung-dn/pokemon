@@ -1,36 +1,27 @@
-import { useState } from "react";
 export default function FilterBox(props) {
   const {
     colorClasses,
-    pokemons,
     listType,
     input,
     handleCheckBox,
     handleClickSearch,
     handleInput,
-    filterByInput,
-    filteredPokemonType,
   } = props;
 
   return (
-    <div className="flex flex-col w-[785px] h-[160px] gap-4  font-montserrat my-100px">
+    <div className="relative flex flex-col mx-auto w-full lg:justify-start lg:items-start  justify-center items-center h-40 gap-4 font-montserrat lg:my-100px lg:w-785px my-24 ">
       <div>
         <input
-          className="w-[260px] h-[40px] line pl-3 border-black border-[1px] rounded-lg "
+          className="w-260px h-10 line pl-3 border-black border rounded-lg lg:ml-4 "
           placeholder="search for a pokemon..."
           value={input}
           onChange={(e) => {
             handleInput(e);
           }}
         />
-        <button
-          onClick={handleClickSearch}
-          className="  ml-8 bg-flying h-full border-black border-[1px] rounded-lg px-2 "
-        >
-          Search
-        </button>
       </div>
-      <div className="flex flex-row flex-wrap justify-start gap-4">
+
+      <div className="flex flex-row flex-wrap lg:justify-start justify-center lg:gap-4 gap-2">
         {listType.map((cell) => {
           return (
             <div
@@ -46,7 +37,7 @@ export default function FilterBox(props) {
                 }}
               />
               <p
-                className={` w-[72px] h-[25px] text-center rounded-md text-white ${colorClasses[cell]} `}
+                className={` w-72px h-25px text-center rounded-md text-white ${colorClasses[cell]} `}
               >
                 {cell}
               </p>
@@ -54,6 +45,12 @@ export default function FilterBox(props) {
           );
         })}
       </div>
+      <button
+        onClick={handleClickSearch}
+        className="lg:ml-8 bg-flying h-10 border-black border rounded-lg px-2 lg:absolute left-72 "
+      >
+        Search
+      </button>
     </div>
   );
 }

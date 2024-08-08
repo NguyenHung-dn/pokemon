@@ -23,7 +23,7 @@ const Layout = (props) => {
     router.push("/");
   };
   return (
-    <div>
+    <>
       <Navbar
         handleLogin={handleLogin}
         handleLogout={handleLogout}
@@ -32,7 +32,7 @@ const Layout = (props) => {
       />
       <main>{props.children}</main>
       <Footer />
-    </div>
+    </>
   );
 };
 export default Layout;

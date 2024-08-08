@@ -44,7 +44,7 @@ export default function ModalPokemon({ pokemonName, setPokemonName }) {
           }))
         );
       } catch (err) {
-        setError("Failed to fetch   data");
+        setError("Failed to fetch data");
         console.error(err);
       } finally {
         setLoading(false);
@@ -57,13 +57,16 @@ export default function ModalPokemon({ pokemonName, setPokemonName }) {
   const handleClickModal = () => {
     setPokemon(null);
   };
+
   return (
-    <div className="mt-225px">
+    <div className="lg:mt-225px fixed lg:static top-12 right-1/2 translate-x-1/2 z-40">
       {pokemon ? (
-        <div className={`w-375px h-fit rounded-xl relative  `}>
+        <div
+          className={`lg:w-375px lg:h-fit h-785px rounded-xl relative overflow-y-auto`}
+        >
           {pokemon && (
-            <div className="flex  flex-col relative">
-              <div className="absolute top-1 left-1 w-10 h-10 bg-white  flex justify-center items-center rounded-lg z-10 ">
+            <div className="flex flex-col relative">
+              <div className="absolute top-1 left-1 w-10 h-10 bg-white flex justify-center items-center rounded-lg z-10 ">
                 {pokemon.id}
               </div>
               <button
@@ -91,7 +94,7 @@ export default function ModalPokemon({ pokemonName, setPokemonName }) {
                     {pokemon.types.map((item) => {
                       return (
                         <div
-                          className={`bg-${item.type.name}  w-72px text-center rounded-4`}
+                          className={`bg-${item.type.name}w-72px text-center rounded-4`}
                           key={item.type.name}
                         >
                           {item.type.name}
@@ -100,7 +103,7 @@ export default function ModalPokemon({ pokemonName, setPokemonName }) {
                     })}
                   </div>
                   <p className="text-sm text-start px-3 ">{species}</p>
-                  <div className="h-186px w-345px bg-steel rounded-xl flex  flex-col gap-1 ">
+                  <div className="h-186px w-345px bg-steel rounded-xl flex flex-col gap-1 ">
                     {/* stats */}
                     {pokemon.stats.map((item, index) => {
                       let statName;
@@ -115,7 +118,7 @@ export default function ModalPokemon({ pokemonName, setPokemonName }) {
                       return (
                         <div
                           key={index}
-                          className="p-1  h-5 text-sm flex gap-1  items-center m-auto "
+                          className="p-1h-5 text-sm flex gap-1 items-center m-auto "
                         >
                           <div className="w-16 text-sm">{statName}</div>
                           <div
@@ -141,7 +144,7 @@ export default function ModalPokemon({ pokemonName, setPokemonName }) {
                   <div className=" flex gap-4 flex-col mb-4">
                     {abilities.map((ability, index) => (
                       <div
-                        className="text-center  bg-steel mx-2 rounded-xl "
+                        className="text-center bg-steel mx-2 rounded-xl "
                         key={index}
                       >
                         <p className="mb-1.5 mt-1.5">{ability.name}</p>
@@ -159,7 +162,7 @@ export default function ModalPokemon({ pokemonName, setPokemonName }) {
         </div>
       ) : (
         <div
-          className={`min-h-1000px w-375px rounded-xl flex items-center justify-center bg-steel  `}
+          className={`min-h-780px w-375px rounded-xl lg:flex items-center justify-center hidden bg-steel `}
         >
           Select a pokémon to see its details
         </div>

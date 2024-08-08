@@ -54,7 +54,7 @@ export default function ModalUser({
   };
 
   return (
-    <div className=" mt-80 mr-11 h-56 w-340px bg-white rounded-lg flex flex-col items-center">
+    <div className=" mt-80  md:mr-11 md:static fixed right-1/2 translate-x-1/2 md:translate-x-0 h-56 w-340px bg-white rounded-lg flex flex-col items-center">
       <p className="pt-3 pb-3"> Account</p>
       <form
         onSubmit={(e) => {
@@ -84,7 +84,7 @@ export default function ModalUser({
             onClick={() => {
               setAction("login");
             }}
-            className="h-10  w-150px rounded-lg bg-white text-primary "
+            className="h-10 w-150px rounded-lg bg-white text-primary "
           >
             Login
           </button>
@@ -93,7 +93,7 @@ export default function ModalUser({
             onClick={() => {
               setAction("signup");
             }}
-            className="h-10 w-150px rounded-lg bg-primary  text-white"
+            className="h-10 w-150px rounded-lg bg-primary text-white"
           >
             SignUp
           </button>
