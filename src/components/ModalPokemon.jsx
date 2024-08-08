@@ -59,7 +59,7 @@ export default function ModalPokemon({ pokemonName, setPokemonName }) {
   };
 
   return (
-    <div className="lg:mt-225px fixed lg:static top-12 right-1/2 translate-x-1/2 z-40">
+    <div className=" lg:mt-225px fixed top-12 translate-x-1/2 right-1/2 lg:translate-x-0 lg:static w-375px z-40">
       {pokemon ? (
         <div
           className={`lg:w-375px lg:h-fit h-785px rounded-xl relative overflow-y-auto`}

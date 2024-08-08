@@ -104,8 +104,11 @@ export default function Home() {
             content="Find your favorite pokémon"
           />
           <meta property="og:image" content="/banner.png" />
-          <meta property="og:url" content=" " />
-          <meta property="og:type" content="website" />
+          <meta
+            property="og:url"
+            content="https://pokemon-main-kohl.vercel.app/ "
+          />
+          <meta property="og:type" content="Pokédex -Homepage" />
           <meta name="twitter:card" content="image card" />
           <meta name="twitter:title" content="Pokédex - Homepage" />
           <meta
@@ -116,7 +119,7 @@ export default function Home() {
           <link rel="icon" type="image/x-icon" href="/favicon.png"></link>
         </Head>
 
-        <div className="lg:ml-16 lg:mr-16 flex flex-col lg:flex-row max-w-1400px mx-auto mb-24 mt-14 ">
+        <div className=" lg:mx-auto flex flex-col lg:flex-row max-w-1200px mx-auto mb-24 mt-14 ">
           <div className="relative ">
             <FilterBox
               pokemons={pokemons}
@@ -133,10 +136,12 @@ export default function Home() {
               handleClickDetail={handleClickDetail}
             />
           </div>
-          <ModalPokemon
-            pokemonName={pokemonName}
-            setPokemonName={setPokemonName}
-          />
+          <div className="w-825px">
+            <ModalPokemon
+              pokemonName={pokemonName}
+              setPokemonName={setPokemonName}
+            />
+          </div>
         </div>
       </Layout>
     </div>

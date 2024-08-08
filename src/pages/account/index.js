@@ -2,6 +2,7 @@ import CreateTeam from "@/components/CreateTeam";
 import Layout from "@/components/layout";
 import axios from "axios";
 import Cookies from "js-cookie";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 
 export default function AccountPage() {
@@ -27,9 +28,24 @@ export default function AccountPage() {
 
     fetchData(); // Gọi hàm fetchData
   }, [cookie]); // Dependency array
-  console.log("userData", userData);
   return (
     <Layout title={"Account"}>
+      <Head>
+        <title>Pokédex - AccountPage</title>
+        <meta property="og:title" content="Pokédex - Homepage" />
+        <meta property="og:description" content="Find your favorite pokémon" />
+        <meta property="og:image" content="/banner.png" />
+        <meta
+          property="og:url"
+          content="https://pokemon-main-kohl.vercel.app/"
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="image card" />
+        <meta name="twitter:title" content="Pokédex - Homepage" />
+        <meta name="twitter:description" content="Find your favorite pokémon" />
+        <meta name="twitter:image" content="/banner.png" />
+        <link rel="icon" type="image/x-icon" href="/favicon.png"></link>
+      </Head>
       <CreateTeam userData={userData} />
     </Layout>
   );
