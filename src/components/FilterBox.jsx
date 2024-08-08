@@ -9,7 +9,7 @@ export default function FilterBox(props) {
   } = props;
 
   return (
-    <div className="relative flex flex-col mx-auto w-full lg:justify-start lg:items-start  justify-center items-center h-40 gap-4 font-montserrat lg:my-100px lg:w-785px my-24 ">
+    <div className="relative flex flex-col mx-auto w-full lg:justify-start lg:items-start  justify-center items-center h-40 gap-4 font-montserrat lg:my-100px lg:w-825px my-24 ">
       <div>
         <input
           className="w-260px h-10 line pl-3 border-black border rounded-lg lg:ml-4 "
