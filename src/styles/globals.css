@@ -5,63 +5,73 @@
 h3::first-letter {
   text-transform: capitalize;
 }
-li:hover{
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+li:hover {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-:root{
-  --grass: #78C850;
-  --fire: #F08030;
-  --water: #6890F0;
-  --bug: #A8B820;
-  --normal: #A8A878;
-  --poison: #A040A0;
-  --electric: #F8D030;
-  --ground: #E0C068;
-  --fairy: #EE99AC;
-  --fighting: #C03028;
-  --psychic: #F85888;
-  --rock: #B8A038;
-  --steel: #B8B8D0;
-  --ice: #98D8D8;
+:root {
+  --grass: #78c850;
+  --fire: #f08030;
+  --water: #6890f0;
+  --bug: #a8b820;
+  --normal: #a8a878;
+  --poison: #a040a0;
+  --electric: #f8d030;
+  --ground: #e0c068;
+  --fairy: #ee99ac;
+  --fighting: #c03028;
+  --psychic: #f85888;
+  --rock: #b8a038;
+  --steel: #b8b8d0;
+  --ice: #98d8d8;
   --ghost: #705898;
-  --dragon: #7038F8;
+  --dragon: #7038f8;
   --dark: #705848;
 }
 
-.loader
-{
-    font-size: 1.2rem;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15vh 0;
-    flex-direction: column;
+.loader {
+  font-size: 1.2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15vh 0;
+  flex-direction: column;
 }
 
-.loader::before
-{
-    content: '';
-    display: block;
-    height: 2em;
-    width: 2em;
-    border: .6em solid #FB6C6C;
-    border-radius: 100%;
-    margin-bottom: 10px;
-    clip-path: polygon( 0 0, 0 40%, 50% 40%, 50% 60%, 0 60%, 0 100%, 100% 100%, 100% 60%, 50% 60%, 50% 40%, 100% 40%, 100% 0 );
-    animation: spin .5s infinite ease-in-out;
+.loader::before {
+  content: "";
+  display: block;
+  height: 2em;
+  width: 2em;
+  border: 0.6em solid #fb6c6c;
+  border-radius: 100%;
+  margin-bottom: 10px;
+  clip-path: polygon(
+    0 0,
+    0 40%,
+    50% 40%,
+    50% 60%,
+    0 60%,
+    0 100%,
+    100% 100%,
+    100% 60%,
+    50% 60%,
+    50% 40%,
+    100% 40%,
+    100% 0
+  );
+  animation: spin 0.5s infinite ease-in-out;
 }
 
-.loader::after
-{
-    content: '';
-    display: block;
-    position: absolute;
-    top: 50%;
-    margin-top: -1.6em;
-    height: 1.2em;
-    width: 1.2em;
-    background-color: #CCC;
-    border-radius: 100%;
+.loader::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -1.6em;
+  height: 1.2em;
+  width: 1.2em;
+  background-color: #ccc;
+  border-radius: 100%;
 }

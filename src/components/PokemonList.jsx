@@ -2,17 +2,9 @@ import PokemonCard from "./PokemonCard";
 
 function PokemonList({ pokemons, handleClickDetail }) {
   return (
-    <ul className="flex flex-wrap gap-10">
+    <div className="flex flex-wrap items-center justify-center  gap-0.5 md:gap-5 lg:gap-10">
       {pokemons.map((pokemon) => {
         return (
-          // <PokemonCard
-          //   key={pokemon.id}
-          //   name={pokemon.name}
-          //   imageUrl={pokemon.imageUrl}
-          //   types={pokemon.types}
-          //   typeCss={pokemon.typeCss}
-          //   pokemon={pokemon}
-          // />
           <PokemonCard
             key={pokemon.id}
             name={pokemon.name}
@@ -24,7 +16,7 @@ function PokemonList({ pokemons, handleClickDetail }) {
           />
         );
       })}
-    </ul>
+    </div>
   );
 }
 
