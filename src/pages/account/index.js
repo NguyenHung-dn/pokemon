@@ -4,7 +4,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import TeamManagerModal from "./TeamManagerModal";
 
 export default function AccountPage() {
   const [userData, setUserData] = useState("");

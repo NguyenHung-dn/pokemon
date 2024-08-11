@@ -1,9 +1,9 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
-import PokemonSelectionModal from "@/pages/account/PokemonSelectionModal";
-import AbilityMoveSelectionModal from "@/pages/account/AbilityMoveSelectionModal";
-import PokemonInformationModal from "@/pages/account/PokemonInformationModal ";
+import PokemonSelectionModal from "./accountPage/PokemonSelectionModal";
+import AbilityMoveSelectionModal from "./accountPage/AbilityMoveSelectionModal";
+import PokemonInformationModal from "./accountPage/PokemonInformationModal";
 
 export default function CreateTeam({ userData, fetchDataUserTeams }) {
   const [teamPokemon, setTeamPokemon] = useState([]);
