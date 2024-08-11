@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 export default function AccountPage() {
   const [userData, setUserData] = useState("");
   const [error, setError] = useState(null);
-
+  const [selectedTeamIndex, setSelectedTeamIndex] = useState(null);
+  const [teamPokemon, setTeamPokemon] = useState([]);
   const cookie = Cookies.get("token");
 
   const fetchDataUserTeams = async () => {
@@ -28,9 +29,23 @@ export default function AccountPage() {
   useEffect(() => {
     fetchDataUserTeams();
   }, [cookie]);
+
+  const handleTeamClick = (index) => {
+    setSelectedTeamIndex(index);
+    setTeamPokemon(userData.teams[index]?.team);
+  };
+
   return (
     <Layout title={"Account"}>
-      <CreateTeam userData={userData} fetchDataUserTeams={fetchDataUserTeams} />
+      <CreateTeam
+        userData={userData}
+        fetchDataUserTeams={fetchDataUserTeams}
+        selectedTeamIndex={selectedTeamIndex}
+        teamPokemon={teamPokemon}
+        handleTeamClick={handleTeamClick} // Thêm prop này
+        setTeamPokemon={setTeamPokemon}
+        setSelectedTeamIndex={setSelectedTeamIndex}
+      />
     </Layout>
   );
 }

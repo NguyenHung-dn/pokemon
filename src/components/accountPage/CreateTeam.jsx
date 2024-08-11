@@ -5,10 +5,16 @@ import PokemonSelectionModal from "./PokemonSelectionModal";
 import AbilityMoveSelectionModal from "./AbilityMoveSelectionModal";
 import PokemonInformationModal from "./PokemonInformationModal";
 
-export default function CreateTeam({ userData, fetchDataUserTeams }) {
-  const [teamPokemon, setTeamPokemon] = useState([]);
+export default function CreateTeam({
+  userData,
+  fetchDataUserTeams,
+  selectedTeamIndex,
+  teamPokemon,
+  handleTeamClick,
+  setTeamPokemon,
+  setSelectedTeamIndex,
+}) {
   const [pokemonListName, setPokemonListName] = useState([]);
-  const [selectedTeamIndex, setSelectedTeamIndex] = useState(null);
   const [showPokemonModal, setShowPokemonModal] = useState(false);
   const [showAbilityMoveModal, setShowAbilityMoveModal] = useState(false);
   const [showPokemonInfoModal, setShowPokemonInfoModal] = useState(false);
@@ -84,12 +90,6 @@ export default function CreateTeam({ userData, fetchDataUserTeams }) {
       );
     }
   };
-
-  const handleTeamClick = (index) => {
-    setSelectedTeamIndex(index);
-    setTeamPokemon(userData.teams[index]?.team);
-  };
-
   const addPokemonToTeam = (pokemon) => {
     setTeamPokemon((prevTeam) => {
       if (prevTeam.length < 6) {
