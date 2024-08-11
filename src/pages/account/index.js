@@ -1,4 +1,4 @@
-import CreateTeam from "@/components/CreateTeam";
+import CreateTeam from "@/components/accountPage/CreateTeam";
 import Layout from "@/components/layout";
 import axios from "axios";
 import Cookies from "js-cookie";
