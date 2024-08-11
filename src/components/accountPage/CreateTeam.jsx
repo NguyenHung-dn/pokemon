@@ -13,13 +13,13 @@ export default function CreateTeam({
   handleTeamClick,
   setTeamPokemon,
   setSelectedTeamIndex,
+  setShowPokemonModal, // Nhận prop từ AccountPage
+  setSelectedPokemon, // Nhận prop từ AccountPage
+  setShowAbilityMoveModal, // Nhận prop từ AccountPage
+  setShowPokemonInfoModal, // Nhận prop từ AccountPage
+  setPokemonInfo, // Nhận prop từ AccountPage
 }) {
   const [pokemonListName, setPokemonListName] = useState([]);
-  const [showPokemonModal, setShowPokemonModal] = useState(false);
-  const [showAbilityMoveModal, setShowAbilityMoveModal] = useState(false);
-  const [showPokemonInfoModal, setShowPokemonInfoModal] = useState(false);
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
-  const [pokemonInfo, setPokemonInfo] = useState(null);
   const token = Cookies.get("token");
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function CreateTeam({
 
     fetchPokemon();
   }, []);
-
+  console.log("pokemonListName", pokemonListName);
   const handleCreateTeam = async () => {
     // const token = Cookies.get("token");
     if (!token) {
@@ -60,89 +60,99 @@ export default function CreateTeam({
     }
   };
 
-  const handleSaveTeam = async () => {
-    const token = Cookies.get("token");
-    if (!token) {
-      alert("Token không hợp lệ hoặc không có.");
-      return;
-    }
+  // const handleSaveTeam = async () => {
+  //   const token = Cookies.get("token");
+  //   if (!token) {
+  //     alert("Token không hợp lệ hoặc không có.");
+  //     return;
+  //   }
 
-    if (selectedTeamIndex === null) {
-      alert("No team selected.");
-      return;
-    }
+  //   if (selectedTeamIndex === null) {
+  //     alert("No team selected.");
+  //     return;
+  //   }
 
-    try {
-      await axios.post("https://pokemon-api-phi-nine.vercel.app/team/update", {
-        token,
-        team: {
-          _id: userData.teams[selectedTeamIndex]._id,
-          team: teamPokemon,
-        },
-      });
-      fetchDataUserTeams(); // Cập nhật dữ liệu đội hình
-      alert("Team updated successfully");
-    } catch (error) {
-      console.error("Failed to update team:", error);
-      alert(
-        "Failed to update team: " +
-          (error.response?.data?.message || error.message)
-      );
-    }
-  };
-  const addPokemonToTeam = (pokemon) => {
-    setTeamPokemon((prevTeam) => {
-      if (prevTeam.length < 6) {
-        return [...prevTeam, pokemon];
-      } else {
-        alert("A team can only have up to 6 Pokémon.");
-        return prevTeam;
-      }
-    });
-    setShowPokemonModal(false);
-  };
+  //   try {
+  //     await axios.post("https://pokemon-api-phi-nine.vercel.app/team/update", {
+  //       token,
+  //       team: {
+  //         _id: userData.teams[selectedTeamIndex]._id,
+  //         team: teamPokemon,
+  //       },
+  //     });
+  //     fetchDataUserTeams(); // Cập nhật dữ liệu đội hình
+  //     alert("Team updated successfully");
+  //   } catch (error) {
+  //     console.error("Failed to update team:", error);
+  //     alert(
+  //       "Failed to update team: " +
+  //         (error.response?.data?.message || error.message)
+  //     );
+  //   }
+  // };
+  // const addPokemonToTeam = (pokemon) => {
+  //   setTeamPokemon((prevTeam) => {
+  //     if (prevTeam.length < 6) {
+  //       return [...prevTeam, pokemon];
+  //     } else {
+  //       alert("A team can only have up to 6 Pokémon.");
+  //       return prevTeam;
+  //     }
+  //   });
+  //   setShowPokemonModal(false);
+  // };
 
-  const handleSaveAbilityMove = (pokemon) => {
-    setTeamPokemon((prevTeam) =>
-      prevTeam.map((poke) => (poke.name === pokemon.name ? pokemon : poke))
-    );
-    setShowAbilityMoveModal(false);
-  };
+  // const handleSelectPokemonModal = (pokemon) => {
+  //   setSelectedPokemon(pokemon);
+  //   setShowPokemonModal(true);
+  // };
+  // const handleSaveAbilityMove = (pokemon) => {
+  //   setTeamPokemon((prevTeam) =>
+  //     prevTeam.map((poke) => (poke.name === pokemon.name ? pokemon : poke))
+  //   );
+  //   setShowAbilityMoveModal(false);
+  // };
 
-  const handlePokemonInfo = (pokemon) => {
-    const fetchPokemonDetails = async (pokemonName) => {
-      try {
-        const response = await axios.get(
-          `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
-        );
-        const { name, id, types, abilities, moves } = response.data;
-        setPokemonInfo({
-          name,
-          id,
-          type: types.map((typeInfo) => typeInfo.type.name).join(", "),
-          abilities: abilities.map((abilityInfo) => abilityInfo.ability.name),
-          moves: moves.map((moveInfo) => moveInfo.move.name),
-        });
-        setShowPokemonInfoModal(true);
-      } catch (error) {
-        console.error("Failed to fetch Pokémon details:", error);
-      }
-    };
+  // const handlePokemonInfo = (pokemon) => {
+  //   const fetchPokemonDetails = async (pokemonName) => {
+  //     try {
+  //       const response = await axios.get(
+  //         `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+  //       );
+  //       const { name, id, types, abilities, moves } = response.data;
+  //       setPokemonInfo({
+  //         name,
+  //         id,
+  //         type: types.map((typeInfo) => typeInfo.type.name).join(", "),
+  //         abilities: abilities.map((abilityInfo) => abilityInfo.ability.name),
+  //         moves: moves.map((moveInfo) => moveInfo.move.name),
+  //       });
+  //       setShowPokemonInfoModal(true);
+  //     } catch (error) {
+  //       console.error("Failed to fetch Pokémon details:", error);
+  //     }
+  //   };
 
-    fetchPokemonDetails(pokemon.name);
-  };
+  //   fetchPokemonDetails(pokemon.name);
+  // };
 
-  const handleEditPokemon = (pokemon) => {
-    setSelectedPokemon(pokemon);
-    setShowAbilityMoveModal(true);
-  };
+  // const handleEditPokemon = (pokemon) => {
+  //   setSelectedPokemon(pokemon);
+  //   setShowAbilityMoveModal(true);
+  // };
 
-  const handleSelectPokemon = (pokemon) => {
-    setTeamPokemon((prevTeam) =>
-      prevTeam.map((poke) => (poke.name === pokemon.name ? pokemon : poke))
-    );
-    setShowAbilityMoveModal(true);
-  };
+  // const handleSelectPokemon = (pokemon) => {
+  //   setTeamPokemon((prevTeam) =>
+  //     prevTeam.map((poke) => (poke.name === pokemon.name ? pokemon : poke))
+  //   );
+  //   setShowAbilityMoveModal(true);
+  // };
+
+  const imgId = pokemonListName.map((p) => {
+    const urlParts = p.url.split("/");
+    const id = urlParts[urlParts.length - 2];
+    return { name: p.name, id: Number(id) };
+  });
   return (
     <section className="flex gap-4">
       <div className="h-1000px w-375px bg-primary">
@@ -159,7 +169,7 @@ export default function CreateTeam({
           )}
         </div>
       </div>
-      <div>
+      {/* <div>
         {selectedTeamIndex !== null &&
           userData &&
           userData.teams[selectedTeamIndex] && (
@@ -167,35 +177,36 @@ export default function CreateTeam({
               <div>
                 Choose Pokémon
                 <div className="flex gap-3">
-                  {teamPokemon.map((pokemon) => (
-                    <div
-                      key={pokemon.name}
-                      className="flex items-center gap-3 justify-between p-2 bg-gray-100 rounded mb-2"
-                    >
-                      <span>{pokemon.name}</span>
-                      <button
-                        className="text-blue-500  bg-yellow-400 "
-                        onClick={() => handlePokemonInfo(pokemon)}
+                  {teamPokemon.map((pokemon) => {
+                    return (
+                      <div
+                        key={pokemon.name}
+                        className="flex items-center gap-3 justify-between p-2 bg-gray-100 rounded mb-2"
                       >
-                        Info
-                      </button>
-                      <button
-                        className="text-blue-500 bg-primary "
-                        onClick={() => handleEditPokemon(pokemon)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="text-fire p-2   bg-gray-700"
-                        onClick={() => {
-                          setSelectedPokemon(pokemon);
-                          setShowPokemonModal(true);
-                        }}
-                      >
-                        Select New Pokémon
-                      </button>
-                    </div>
-                  ))}
+                        <span>{pokemon.name}</span>
+                        <button
+                          className="text-blue-500  bg-yellow-400 "
+                          onClick={() => handlePokemonInfo(pokemon)}
+                        >
+                          Info
+                        </button>
+                        <button
+                          className="text-blue-500 bg-primary "
+                          onClick={() => handleEditPokemon(pokemon)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="text-fire p-2   bg-gray-700"
+                          onClick={() => {
+                            handleSelectPokemonModal(pokemon);
+                          }}
+                        >
+                          Select New Pokémon
+                        </button>
+                      </div>
+                    );
+                  })}
                   {teamPokemon.length < 4 && (
                     <button onClick={() => setShowPokemonModal(true)}>
                       Add Pokémon
@@ -212,41 +223,7 @@ export default function CreateTeam({
               </button>
             </>
           )}
-      </div>
-
-      {showPokemonModal && (
-        <PokemonSelectionModal
-          onSave={(pokemon) => {
-            if (selectedPokemon) {
-              setTeamPokemon((prevTeam) =>
-                prevTeam.map((poke) =>
-                  poke.name === selectedPokemon.name ? pokemon : poke
-                )
-              );
-            } else {
-              addPokemonToTeam(pokemon);
-            }
-            setSelectedPokemon(null); // Reset selected Pokémon
-            setShowPokemonModal(false);
-          }}
-          onClose={() => setShowPokemonModal(false)}
-        />
-      )}
-
-      {showAbilityMoveModal && selectedPokemon && (
-        <AbilityMoveSelectionModal
-          pokemon={selectedPokemon}
-          onSave={handleSaveAbilityMove}
-          onClose={() => setShowAbilityMoveModal(false)}
-        />
-      )}
-
-      {showPokemonInfoModal && pokemonInfo && (
-        <PokemonInformationModal
-          pokemon={pokemonInfo}
-          onClose={() => setShowPokemonInfoModal(false)}
-        />
-      )}
+      </div> */}
     </section>
   );
 }
