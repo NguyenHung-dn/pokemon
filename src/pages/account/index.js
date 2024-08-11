@@ -4,7 +4,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import PokemonSelectionModal from "@/components/accountPage/PokemonSelectionModal"; // Di chuyển import này từ CreateTeam
+import PokemonSelectionModal from "@/components/accountPage/PokemonSelectionModal";
 import AbilityMoveSelectionModal from "@/components/accountPage/AbilityMoveSelectionModal";
 import PokemonInformationModal from "@/components/accountPage/PokemonInformationModal";
 import { getAllPokemonDetails } from "@/services/pokemonService";

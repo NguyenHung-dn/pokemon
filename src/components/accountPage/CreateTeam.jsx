@@ -1,11 +1,12 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 export default function CreateTeam({
   userData,
   fetchDataUserTeams,
   handleTeamClick,
 }) {
   const handleCreateTeam = async () => {
-    // const token = Cookies.get("token");
+    const token = Cookies.get("token");
     if (!token) {
       alert("Token không hợp lệ hoặc không có.");
       return;
